@@ -26,6 +26,7 @@ void Ball::update()
   }
 }
 
+
 void Ball::onCollision(int x,int y){
   speedx = x*speedx;
   speedy = y*speedy;
