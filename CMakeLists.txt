@@ -10,6 +10,8 @@ find_package(raylib REQUIRED)
 
 add_executable(
   src/main.cpp
+  src/ball.cpp
+  src/padding.cpp
 )
 
 target_link_libraries(Pong_game PRIVATE raylib)

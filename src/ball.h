@@ -10,6 +10,8 @@ public:
   float y;
   void draw();
   void update();
+  bool collisionx (float, float);
+  bool collisionY(float, float);
 
 private:
   int speedx;
