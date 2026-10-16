@@ -17,7 +17,6 @@ void Game::draw()
 
 void Game::update()
 {
-    ball.update();
 
     //vertical collision check
     if(ball.y + ball.radius >= GetScreenHeight() || ball.y - ball.radius <= 0  ) ball.onCollision(1,-1);
@@ -25,7 +24,24 @@ void Game::update()
     //horizontal collision check
     if( ball.x + ball.radius >= GetScreenWidth() || ball.x - ball.radius <= 0 ) ball.onCollision(-1,1);
 
+    // Check overlap on both axes
+    if (ball.x - ball.radius <= pad1.posx + 10 + pad1.width &&
+            ball.x + ball.radius >= pad1.posx + 10 &&
+            ball.y - ball.radius <= pad1.posy + pad1.height / 2.0f &&
+            ball.y + ball.radius >= pad1.posy - pad1.height / 2.0f)
+    {
+        ball.onCollision(-1, 1);
+    }
 
+    if (ball.speedx > 0 &&
+            ball.x + ball.radius >= pad2.posx - (pad2.width + 10) &&
+            ball.x - ball.radius <= pad2.posx - 10 &&
+            ball.y - ball.radius <= pad2.posy + pad2.height / 2.0f &&
+            ball.y + ball.radius >= pad2.posy - pad2.height / 2.0f)
+    {
+        ball.onCollision(-1, 1);
+    }
+    ball.update();
 }
 
 void Game::movement()

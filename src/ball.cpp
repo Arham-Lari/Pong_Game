@@ -27,25 +27,3 @@ void Ball::onCollision(int x,int y){
   speedy*= y;
 }
 
-bool Ball::collisionx(float x1 , int width)
-{
-    //checking for collision in x axis
-    if( x + radius >= x1 && x - radius <= x1+width)
-    {
-        return true;
-     }
-    return false;
-}
-
-bool Ball::collisionY(float y1, int hight)
-{
-    //checking for collision in y axis
-    if(y + radius >= y1 && y - radius <= y1+ hight )
-    {
-        return true;
-    }
-    return false;
-}
-
-
-
