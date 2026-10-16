@@ -1,3 +1,4 @@
+#include <iostream>
 #include "game.h"
 #include <raylib.h>
 
@@ -6,6 +7,8 @@ Game::Game()
     pad1(0,GetScreenHeight()/2.0f),
     pad2(GetScreenWidth(),GetScreenHeight()/2.0f)
 {
+    player1 = 0;
+    player2 = 0;
 }
 
 void Game::draw()
@@ -17,6 +20,7 @@ void Game::draw()
 
 void Game::update()
 {
+    touchedTheWall();
 
     //vertical collision check
     if(ball.y + ball.radius >= GetScreenHeight() || ball.y - ball.radius <= 0  ) ball.onCollision(1,-1);
@@ -24,7 +28,7 @@ void Game::update()
     //horizontal collision check
     if( ball.x + ball.radius >= GetScreenWidth() || ball.x - ball.radius <= 0 ) ball.onCollision(-1,1);
 
-    // Check overlap on both axes
+    // padding collision check
     if (ball.x - ball.radius <= pad1.posx + 10 + pad1.width &&
             ball.x + ball.radius >= pad1.posx + 10 &&
             ball.y - ball.radius <= pad1.posy + pad1.height / 2.0f &&
@@ -51,5 +55,27 @@ void Game::movement()
 
     if(IsKeyDown(KEY_S)) pad2.movedown();
     else if (IsKeyDown(KEY_W)) pad2.moveup();
+}
+
+void Game::touchedTheWall()
+{
+    if(ball.x - ball.radius <= 0 ){
+        player2 ++;
+    }
+
+    else if(ball.x + ball.radius >= GetScreenWidth())
+    {
+        player1++;
+    }
+}
+
+int Game::score1()
+{
+    return player1;
+}
+
+int Game::score2()
+{
+    return player2;
 }
 
