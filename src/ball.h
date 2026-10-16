@@ -4,18 +4,18 @@
 
 class Ball
 {
-public:
-  Ball();
-  float x;
-  float y;
-  void draw();
-  void update();
-  bool collisionx (float, float);
-  bool collisionY(float, float);
+    public:
+        Ball();
+        void draw();
+        void update();
+        bool collisionx (float, int);
+        bool collisionY(float, int);
+        float x;
+        float y;
+        int radius;
+        void onCollision(int x, int y);
 
-private:
-  int speedx;
-  int speedy;
-  int radius;
-  void onCollision(int x, int y);
+    private:
+        int speedx;
+        int speedy;
 };

@@ -8,9 +8,9 @@ class Paddding {
     void draw();
     void movedown();
     void moveup();
-
-  private:
     int height ,width;
     float posx ,posy;
+
+  private:
 
 };

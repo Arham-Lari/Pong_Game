@@ -3,6 +3,8 @@
 
 Ball::Ball()
 {
+  x = (float) GetScreenWidth()/2;
+  y = (float)GetScreenHeight()/2;
   radius = 30; speedx = 2;
   speedy =2;
 }
@@ -14,20 +16,8 @@ void Ball::draw()
 
 void Ball::update()
 {
-  x += speedx;
-  y += speedy;
-  
-  //vertical collision check
-  if(collisionY(GetScreenHeight(), 0))
-  {
-    onCollision(1,-1);
-  }
-
-  //horizontal collision check
-  if(collisionx(GetScreenWidth(),0))
-  {
-    onCollision(-1,1);
-  }
+    x += speedx;
+    y += speedy;
 }
 
 
@@ -37,20 +27,20 @@ void Ball::onCollision(int x,int y){
   speedy*= y;
 }
 
-bool Ball::collisionx(float x1 , float x2)
+bool Ball::collisionx(float x1 , int width)
 {
     //checking for collision in x axis
-    if( this->x + radius >= x1 || this->x - radius <= x2)
+    if( x + radius >= x1 && x - radius <= x1+width)
     {
         return true;
-    }
+     }
     return false;
 }
 
-bool Ball::collisionY(float y1, float y2)
+bool Ball::collisionY(float y1, int hight)
 {
     //checking for collision in y axis
-    if(this->y + radius >= y1 || this->y - radius <= y2 )
+    if(y + radius >= y1 && y - radius <= y1+ hight )
     {
         return true;
     }
