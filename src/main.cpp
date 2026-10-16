@@ -8,11 +8,10 @@ int main(int argc, const char** argv){
     const int screen_width = 1200;
     const int screen_height = 800;
 
+        InitWindow(screen_width,screen_height,"Pong_Game");
+
     //creating the object of game class
     Game game = Game(); 
-
-    //creating the game window
-    InitWindow(screen_width,screen_height,"Pong_Game");
 
 
     //set fps of game
